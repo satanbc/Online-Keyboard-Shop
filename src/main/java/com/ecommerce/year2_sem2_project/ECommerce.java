@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Year2Sem2ProjectApplication {
+public class ECommerce {
 
     public static void main(String[] args) {
-        SpringApplication.run(Year2Sem2ProjectApplication.class, args);
+        SpringApplication.run(ECommerce.class, args);
     }
 
 }

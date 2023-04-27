@@ -26,13 +26,6 @@ public class Product {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
-
-    @Column(name = "featured")
-    private boolean featured;
-
     public Long getId() {
         return id;
     }
@@ -79,21 +72,5 @@ public class Product {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public boolean isFeatured() {
-        return featured;
-    }
-
-    public void setFeatured(boolean featured) {
-        this.featured = featured;
     }
 }

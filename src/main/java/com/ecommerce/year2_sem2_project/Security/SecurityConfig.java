@@ -18,7 +18,7 @@ public class SecurityConfig {
 
         UserDetails matvii = User.builder()
                 .username("matvii")
-                .password("{noop}123")
+                .password("{noop}1234")
                 .roles("ADMIN")
                 .build();
 
@@ -30,7 +30,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(configurer ->
                     configurer
-                            .requestMatchers("/products/**").authenticated()
+                            .requestMatchers("/admin/**").authenticated()
                             .anyRequest().permitAll()
                 )
                 .formLogin(form ->
@@ -39,6 +39,7 @@ public class SecurityConfig {
                                 .loginProcessingUrl("/authenticateTheUser")
                                 .permitAll()
                 );
+
         return http.build();
     }
 }

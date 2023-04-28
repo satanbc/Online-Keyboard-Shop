@@ -22,4 +22,16 @@ public class EcommerceController {
         model.addAttribute("products", products);
         return "home";
     }
+
+    @GetMapping("/contact")
+    public String contact() {
+
+        return "contact";
+    }
+
+    @GetMapping("/about")
+    public String about() {
+
+        return "about";
+    }
 }

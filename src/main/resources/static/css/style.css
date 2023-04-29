@@ -1,0 +1,158 @@
+body {
+    padding: 20px 20px;
+}
+.catalogue{
+    margin-top: -10%;
+}
+.card {
+    height: 450px;
+}
+@media (max-width: 1200px) {
+    .card-text {
+        display: none;
+    }
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: #f0f0f0;
+    z-index: 999;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.logo {
+    float: left;
+    margin-left: 20px;
+    margin-top: -5px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.navigation {
+    float: right;
+    margin-right: 20px;
+    margin-top: -14px;
+}
+
+.navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.navigation li:first-child {
+    margin-left: 0;
+}
+
+.navigation a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.navigation a:hover {
+    background-color: #dcdcdc;
+}
+
+.container {
+    max-width: 800px;
+    margin: 10px auto;
+    margin-top: 120px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.rimage-wrapper {
+    position: relative;
+    transition: background 150ms;
+}
+.rimage-wrapper.lazyload--placeholder {
+    background: #f0f0f0;
+}
+.rimage-wrapper .rimage__image {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    top: -10%;
+    left: 0;
+    clip-path: polygon(0 20%, 100% 20%, 100% 80%, 0% 80%);
+}
+.rimage-wrapper .rimage__image.blur-in {
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+    transition: filter 400ms, -webkit-filter 400ms;
+}
+.rimage-wrapper .rimage__image.blur-in.lazyloaded {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+}
+.rimage-wrapper .rimage__image.fade-in {
+    opacity: 0;
+    transition: opacity 500ms;
+}
+.rimage-wrapper .rimage__image.fade-in.lazyloaded {
+    opacity: 1;
+}
+.rimage-wrapper .rimage__image.cover {
+    object-fit: cover;
+}
+
+button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 15px;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-decoration: none !important;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: button;
+    background-color: var(--primary);
+    color: #fff;
+    border: 1.5px solid var(--primary);
+    border-radius: 3px;
+    transition: background-color 100ms, color 100ms, border-color 100ms, opacity 100ms;
+    vertical-align: middle;
+}
+
+button:hover, button:focus {
+    opacity: 0.8;
+}
+
+.image-text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 500%;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 1px 1px 1px black;
+}
+
+
+
+

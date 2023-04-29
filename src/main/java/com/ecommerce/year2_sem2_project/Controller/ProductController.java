@@ -7,6 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 @Controller
 @RequestMapping("/admin/products")
 public class ProductController {
@@ -16,9 +23,30 @@ public class ProductController {
 
     @GetMapping("")
     public String listProducts(Model model) {
-        model.addAttribute("products", productService.getAllProducts());
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+        List<Product> productList = new ArrayList<>();
+        List<Future<Product>> futureList = new ArrayList<>();
+
+        for (Product product : productService.getAllProducts()) {
+            Future<Product> future = executorService.submit(() -> productService.getProductById(product.getId()));
+            futureList.add(future);
+        }
+
+        for (Future<Product> future : futureList) {
+            try {
+                productList.add(future.get());
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        executorService.shutdown();
+
+        model.addAttribute("products", productList);
         return "admin/productList";
     }
+
 
     @GetMapping("/add")
     public String addProductForm(Model model) {

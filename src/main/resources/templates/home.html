@@ -3,78 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>My Ecommerce Website</title>
 </head>
-<style>
-    body {
-        padding: 20px 20px;
-    }
-    .card {
-        height: 450px;
-    }
-    @media (max-width: 1200px) {
-        .card-text {
-            display: none;
-        }
-    }
-    .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 90px;
-        background-color: #f0f0f0;
-        z-index: 999;
-    }
-    .sticky {
-        position: fixed;
-        top: 0;
-        left: 0;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    .logo {
-        float: left;
-        margin-left: 20px;
-        margin-top: -5px;
-    }
-
-    .logo img {
-        height: 50px;
-    }
-
-    .navigation {
-        float: right;
-        margin-right: 20px;
-        margin-top: -14px;
-    }
-
-    .navigation ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .navigation li {
-        display: inline-block;
-        margin-left: 20px;
-    }
-
-    .navigation li:first-child {
-        margin-left: 0;
-    }
-
-    .navigation a {
-        display: block;
-        color: #333;
-        text-decoration: none;
-        padding: 10px;
-    }
-
-    .navigation a:hover {
-        background-color: #dcdcdc;
-    }
-</style>
 <body>
 <header class="header">
     <br>
@@ -100,27 +32,31 @@
 </script>
 
 <main>
-    <br><br><br><br>
-    <h1>Keyboards</h1>
-    <br>
-    <div class="row">
-        <div class="col-md-3" th:each="product : ${products}">
-            <div class="card mb-3 shadow-sm">
-                <img th:src="@{${product.imageUrl}}" class="card-img-top" alt="Product Image"
-                     style="height: 225px; width: 100%; margin-top: 2px; object-fit: scale-down">
-                <div class="card-body d-flex flex-column justify-content-between">
-                    <div>
-                        <h5 class="card-title" th:text="${product.name}"></h5>
-                        <p class="card-text" th:text="${product.description}"></p>
-                        <small class="text-muted" style="margin: 5px" th:text="'$' + ${product.price}"></small>
-                    </div>
-                    <div class="btn-group">
-                        <button th:onclick="'/cart/add/' + ${product.id}" type="button">Add to Cart</button>
+
+    <div class="rimage-wrapper" style="padding-top:45.00250292007342%">
+        <img src="//cdn.shopify.com/s/files/1/0238/7342/1376/collections/dark_amber_2_1024x1024.png?v=1665174275" alt="Switches" class="rimage__image">
+        <div class="image-text">Keyboards</div>
+    </div>
+
+    <div class="catalogue">
+        <div class="row">
+            <div class="col-md-3" th:each="product : ${products}">
+                <div class="card mb-3 shadow-sm">
+                    <img th:src="@{${product.imageUrl}}" class="card-img-top" alt="Product Image"
+                         style="height: 225px; width: 100%; margin-top: 2px; object-fit: scale-down">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="card-title" th:text="${product.name}"></h5>
+                            <p class="card-text" th:text="${product.description}"></p>
+                            <small class="text-muted" style="margin: 5px; font-size: 150%" th:text="'$' + ${product.price}"></small>
+                        </div>
+                        <button class="button button--large" type="submit" data-add-to-cart-text="Add to Cart">Add to Cart</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </main>
 <footer>
     <p>&copy; Cannon Keys</p>

@@ -18,8 +18,8 @@
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/cart/view">Cart</a></li>
-            <li><a href="admin/products">Admin <img th:src="@{https://cdn-icons-png.flaticon.com/512/6522/6522516.png}" style="height: 50px; width: auto; object-fit: scale-down" class="card-img-top" alt="icon"></a></li>
+            <li><a href="/cart">Cart</a></li>
+            <li><a href="admin/products">Admin<img th:src="@{https://cdn-icons-png.flaticon.com/512/6522/6522516.png}" style="height: 50px; width: auto; object-fit: scale-down" class="card-img-top" alt="icon"></a></li>
         </ul>
     </nav>
 </header>
@@ -50,7 +50,11 @@
                             <p class="card-text" th:text="${product.description}"></p>
                             <small class="text-muted" style="margin: 5px; font-size: 150%" th:text="'$' + ${product.price}"></small>
                         </div>
-                        <button class="button button--large" type="submit" data-add-to-cart-text="Add to Cart">Add to Cart</button>
+
+                        <form th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
+                            <button class="button button--large" type="submit" data-add-to-cart-text="Add to Cart">Add to Cart</button>
+                        </form>
+
                     </div>
                 </div>
             </div>

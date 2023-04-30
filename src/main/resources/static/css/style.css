@@ -153,6 +153,10 @@ button:hover, button:focus {
     text-shadow: 1px 1px 1px black;
 }
 
+.total-price {
+    text-align: right;
+}
+
 
 
 

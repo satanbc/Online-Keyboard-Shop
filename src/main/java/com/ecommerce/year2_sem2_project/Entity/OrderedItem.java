@@ -21,8 +21,6 @@ public class OrderedItem {
     private int quantity;
     private double price;
 
-    // Constructors, getters, and setters
-
     public OrderedItem() {
     }
 
@@ -32,8 +30,6 @@ public class OrderedItem {
         this.quantity = quantity;
         this.price = price;
     }
-
-    // Getters and setters
 
     public Long getId() {
         return id;

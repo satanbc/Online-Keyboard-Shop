@@ -81,8 +81,7 @@ public class CartController {
                               HttpSession session,
                               Model model) {
 
-        // Create the order
-        double totalPrice = 0;
+        long totalPrice = 0;
         Order order = new Order();
         order.setCustomerName(customerName);
         order.setEmail(email);
@@ -90,11 +89,10 @@ public class CartController {
 
         List<OrderedItem> orderedItems = new ArrayList<>();
 
-        // Create ordered items and calculate total price
         for (Product product : cart) {
             OrderedItem orderedItem = new OrderedItem();
             orderedItem.setProduct(product);
-            orderedItem.setQuantity(1); // Assuming quantity is always 1
+            orderedItem.setQuantity(1);
             orderedItem.setPrice(product.getPrice());
 
             orderedItems.add(orderedItem);
@@ -104,16 +102,12 @@ public class CartController {
         order.setTotalPrice(totalPrice);
         order.setOrderedItems(orderedItems);
 
-        // Save the order to the database
         orderService.createOrder(order);
 
-        // Clear the cart items from the session
         cart.clear();
 
-        // Add the order object to the model
         model.addAttribute("order", order);
 
-        // Return the view name for order success page
         return "order-success";
     }
 

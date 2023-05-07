@@ -2,6 +2,7 @@ package com.ecommerce.year2_sem2_project.Controller;
 
 import com.ecommerce.year2_sem2_project.Entity.Order;
 import com.ecommerce.year2_sem2_project.Entity.Product;
+import com.ecommerce.year2_sem2_project.Factory.ProductFactory;
 import com.ecommerce.year2_sem2_project.Service.OrderService;
 import com.ecommerce.year2_sem2_project.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,9 @@ public class ProductController {
 
     @PostMapping("/add")
     public String addProductSubmit(@ModelAttribute("product") Product product) {
-        productService.saveProduct(product);
+        Product prdct = ProductFactory.createProduct(product.getName(), product.getDescription(), product.getPrice(), product.getStock(), product.getImageUrl());
+
+        productService.saveProduct(prdct);
         return "redirect:/admin/products";
     }
 

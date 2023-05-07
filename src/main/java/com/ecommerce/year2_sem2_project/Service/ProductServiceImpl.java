@@ -3,6 +3,7 @@ package com.ecommerce.year2_sem2_project.Service;
 import com.ecommerce.year2_sem2_project.DAO.ProductRepository;
 import com.ecommerce.year2_sem2_project.Entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 @Service
+@Scope("singleton")
 public class ProductServiceImpl implements ProductService {
 
     @Autowired

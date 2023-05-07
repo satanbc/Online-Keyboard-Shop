@@ -31,13 +31,13 @@ public class Order {
     private List<OrderedItem> orderedItems;
 
     @Column(nullable = false)
-    private double totalPrice;
+    private long totalPrice;
 
     public Order() {
         this.orderDate = new Date();
     }
 
-    public Order(String customerName, String email, String address, Date orderDate, List<OrderedItem> orderedItems, double totalPrice) {
+    public Order(String customerName, String email, String address, Date orderDate, List<OrderedItem> orderedItems, long totalPrice) {
         this.customerName = customerName;
         this.email = email;
         this.address = address;
@@ -98,7 +98,7 @@ public class Order {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(long totalPrice) {
         this.totalPrice = totalPrice;
     }
 }

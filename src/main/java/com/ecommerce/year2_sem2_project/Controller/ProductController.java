@@ -1,6 +1,8 @@
 package com.ecommerce.year2_sem2_project.Controller;
 
+import com.ecommerce.year2_sem2_project.Entity.Order;
 import com.ecommerce.year2_sem2_project.Entity.Product;
+import com.ecommerce.year2_sem2_project.Service.OrderService;
 import com.ecommerce.year2_sem2_project.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private OrderService orderService;
 
     @GetMapping("")
     public String listProducts(Model model) {
@@ -86,5 +91,12 @@ public class ProductController {
         productService.deleteById(theId);
 
         return "redirect:/admin/products";
+    }
+
+    @GetMapping("/orders")
+    public String showAdminOrdersPage(Model model) {
+        List<Order> orders = orderService.getAllOrders();
+        model.addAttribute("orders", orders);
+        return "admin/ordersList";
     }
 }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Success</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<header class="header">
+    <br>
+    <div class="logo">
+        <a href="/"><img src="https://cdn.shopify.com/s/files/1/0238/7342/1376/files/ck-logo-full-smaller-navy-stroke_250x.png?v=1652298695" alt="Logo"></a>
+    </div>
+    <nav class="navigation">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/cart">Cart</a></li>
+            <li><a href="/admin/products">Admin <img th:src="@{https://cdn-icons-png.flaticon.com/512/6522/6522516.png}" style="height: 50px; width: auto; object-fit: scale-down" class="card-img-top" alt="icon"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<script>
+    window.addEventListener("scroll", function() {
+        var header = document.querySelector(".header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    });
+</script>
+
+<div class="container">
+    <h2>Order Confirmation</h2>
+
+    <p>Thank you for your order! Here are the details:</p>
+
+    <div>
+        <h3>Customer Information:</h3>
+        <p><strong>Name:</strong> <span th:text="${order.customerName}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${order.email}"></span></p>
+        <p><strong>Address:</strong> <span th:text="${order.address}"></span></p>
+    </div>
+
+    <div>
+        <h3>Ordered Products:</h3>
+        <ul>
+            <th:block th:each="item : ${order.orderedItems}">
+                <li>
+                    <span th:text="${item.product.name}"></span> - Quantity: <span th:text="${item.quantity}"></span> - Price: $<span th:text="${item.price}"></span>
+                </li>
+            </th:block>
+        </ul>
+    </div>
+
+    <p><strong>Total Price:</strong> $<span th:text="${order.totalPrice}"></span></p>
+
+    <p>Thank you for your order. We will process it shortly!</p>
+</div>
+
+<footer>
+    <p>&copy; Cannon Keys</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

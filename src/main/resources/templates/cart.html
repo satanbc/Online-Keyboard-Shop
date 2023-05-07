@@ -51,7 +51,7 @@
       <td style="vertical-align: middle" th:text="'$' + ${product.price}"></td>
       <td>
         <form th:action="@{/cart/remove/{productId}(productId=${product.id})}" method="post">
-          <button class="btn btn-danger" type="submit" style="margin-top: 25%">Remove</button>
+          <button class="btn btn-danger" type="submit" style="margin-top: 30%">Remove</button>
         </form>
       </td>
     </tr>
@@ -61,9 +61,10 @@
     <h3>Total Price: <span th:text="'$' + ${totalPrice}"></span></h3>
   </div>
   <br>
-  <form class="total-price" th:action="@{/cart/checkout}" method="post">
+  <form class="total-price" th:action="@{/cart/order}" method="get">
     <button class="btn btn-primary" type="submit">Checkout</button>
   </form>
+  <br>
 </div>
 
 <footer>

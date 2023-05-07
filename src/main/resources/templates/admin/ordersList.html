@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Orders</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<header class="header">
+    <br>
+    <div class="logo">
+        <a href="/"><img src="https://cdn.shopify.com/s/files/1/0238/7342/1376/files/ck-logo-full-smaller-navy-stroke_250x.png?v=1652298695" alt="Logo"></a>
+    </div>
+    <nav class="navigation">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/cart">Cart</a></li>
+            <li><a href="/admin/products">Admin <img th:src="@{https://cdn-icons-png.flaticon.com/512/6522/6522516.png}" style="height: 50px; width: auto; object-fit: scale-down" class="card-img-top" alt="icon"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<script>
+    window.addEventListener("scroll", function() {
+        var header = document.querySelector(".header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    });
+</script>
+<div class="container">
+    <h1>Admin Orders</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Total Price</th>
+            <th>Ordered Items</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.id}"></td>
+            <td th:text="${order.customerName}"></td>
+            <td th:text="${order.email}"></td>
+            <td th:text="${order.address}"></td>
+            <td th:text="'$' + ${order.totalPrice}"></td>
+            <td>
+                <ul>
+                    <li th:each="orderedItem : ${order.orderedItems}">
+                        <span th:text="${orderedItem.product.name}"></span> - Quantity: <span th:text="${orderedItem.quantity}"></span>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <p>&copy; Cannon Keys</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

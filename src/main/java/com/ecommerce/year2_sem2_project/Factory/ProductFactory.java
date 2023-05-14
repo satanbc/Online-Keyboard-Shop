@@ -2,6 +2,7 @@ package com.ecommerce.year2_sem2_project.Factory;
 
 import com.ecommerce.year2_sem2_project.Entity.Product;
 
+/// Фабрика для створення продуктів
 public class ProductFactory {
     public static Product createProduct(String name, String description, double price, int stock, String imageUrl) {
         Product product = new Product();

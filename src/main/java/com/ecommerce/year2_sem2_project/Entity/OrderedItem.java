@@ -2,6 +2,7 @@ package com.ecommerce.year2_sem2_project.Entity;
 
 import jakarta.persistence.*;
 
+/// Об'єкт замовлених продуктів
 @Entity
 @Table(name = "ordered_items")
 public class OrderedItem {

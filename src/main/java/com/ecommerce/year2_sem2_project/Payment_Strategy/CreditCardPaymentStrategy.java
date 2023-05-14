@@ -2,6 +2,7 @@ package com.ecommerce.year2_sem2_project.Payment_Strategy;
 
 import org.springframework.stereotype.Component;
 
+/// Стратегія оплати карткою
 @Component
 public class CreditCardPaymentStrategy implements PaymentStrategy {
     @Override

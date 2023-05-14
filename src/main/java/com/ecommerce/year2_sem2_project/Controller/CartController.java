@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/// Контролер Spring MVC, відповідальний за обробку операцій, пов'язаних з кошиком та замовленнями
 @Controller
 @SessionAttributes("cart")
 public class CartController {
@@ -47,6 +48,7 @@ public class CartController {
         return new ArrayList<>();
     }
 
+    /// Відображає вид кошика, показуючи вміст кошика та загальну вартість
     @GetMapping("/cart")
     public String showCart(Model model, @ModelAttribute("cart") List<Product> cart) {
         double totalPrice = 0;
@@ -58,7 +60,7 @@ public class CartController {
         return "cart";
     }
 
-
+    /// Додає товар з вказаним ідентифікатором до кошика
     @PostMapping("/cart/add/{productId}")
     public String addToCart(@PathVariable("productId") Long productId, @ModelAttribute("cart") List<Product> cart) {
         Product product = productService.getProductById(productId);
@@ -68,6 +70,7 @@ public class CartController {
         return "redirect:/cart";
     }
 
+    /// Видаляє товар з вказаним ідентифікатором з кошика
     @PostMapping("/cart/remove/{productId}")
     public String removeFromCart(@PathVariable("productId") Long productId, @ModelAttribute("cart") List<Product> cart) {
         Product productToRemove = null;
@@ -83,6 +86,7 @@ public class CartController {
         return "redirect:/cart";
     }
 
+    /// Відображає форму для створення замовлення.
     @GetMapping("/cart/order")
     public String showOrderForm(Model model) {
         List<Product> products = productService.getAllProducts();
@@ -90,6 +94,7 @@ public class CartController {
         return "order-form";
     }
 
+    /// Створює замовлення на основі наданої інформації та обробляє платіж.
     @PostMapping("/cart/order/create")
     public String createOrder(@RequestParam("customerName") String customerName,
                               @RequestParam("email") String email,

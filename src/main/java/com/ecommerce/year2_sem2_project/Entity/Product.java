@@ -2,9 +2,9 @@ package com.ecommerce.year2_sem2_project.Entity;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
+/// Об'єкт продуктів
 @Entity
 @Table(name = "products")
 public class Product {

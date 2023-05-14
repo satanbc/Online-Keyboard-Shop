@@ -17,6 +17,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+/// Контролер Spring MVC, який відповідає за обробку запитів, пов'язаних з продуктами
 @Controller
 @RequestMapping("/admin/products")
 public class ProductController {
@@ -32,6 +33,7 @@ public class ProductController {
         this.orderService = orderService;
     }
 
+    /// Відображає список всіх продуктів у системі
     @GetMapping("")
     public String listProducts(Model model) {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
@@ -58,13 +60,14 @@ public class ProductController {
         return "admin/productList";
     }
 
-
+    /// Відображає форму для додавання нового продукту
     @GetMapping("/add")
     public String addProductForm(Model model) {
         model.addAttribute("product", new Product());
         return "admin/addProductForm";
     }
 
+    /// Обробляє дані, надіслані з форми додавання продукту, і зберігає новий продукт у системі
     @PostMapping("/add")
     public String addProductSubmit(@ModelAttribute("product") Product product) {
         Product prdct = ProductFactory.createProduct(product.getName(), product.getDescription(), product.getPrice(), product.getStock(), product.getImageUrl());
@@ -73,6 +76,7 @@ public class ProductController {
         return "redirect:/admin/products";
     }
 
+    /// Відображає форму для редагування існуючого продукту за його ідентифікатором
     @GetMapping("/{id}/edit")
     public String editProductForm(@PathVariable("id") long id, Model model) {
         Product product = productService.getProductById(id);
@@ -80,12 +84,14 @@ public class ProductController {
         return "admin/editProductForm";
     }
 
+    /// Обробляє дані, надіслані з форми редагування продукту, і оновлює відповідний продукт у системі
     @PostMapping("/{id}/edit")
     public String editProductSubmit(@PathVariable("id") long id, @ModelAttribute("product") Product product) {
         productService.updateProduct(product);
         return "redirect:/admin/products";
     }
 
+    /// Видаляє продукт з системи за його ідентифікатором
     @DeleteMapping(value = "/products/{id}")
     public String deleteProduct(@PathVariable long id) {
         productService.deleteById(id);
@@ -93,6 +99,7 @@ public class ProductController {
         return "Product has been deleted successfully";
     }
 
+    /// Видаляє продукт з системи за його ідентифікатором
     @GetMapping("/delete")
     public String delete(@RequestParam("id") long theId){
 
@@ -101,6 +108,7 @@ public class ProductController {
         return "redirect:/admin/products";
     }
 
+    /// Відображає сторінку зі списком замовлень, зроблених користувачами
     @GetMapping("/orders")
     public String showAdminOrdersPage(Model model) {
         List<Order> orders = orderService.getAllOrders();

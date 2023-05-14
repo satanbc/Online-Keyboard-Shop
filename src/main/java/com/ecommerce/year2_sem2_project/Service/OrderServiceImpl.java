@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.concurrent.*;
 
+/// Реалізація сервісу замовлень
 @Service
 @Scope("singleton")
 public class OrderServiceImpl implements OrderService{

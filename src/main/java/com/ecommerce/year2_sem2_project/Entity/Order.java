@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
+/// Об'єкт замовлення
 @Entity
 @Table(name = "orders")
 public class Order {

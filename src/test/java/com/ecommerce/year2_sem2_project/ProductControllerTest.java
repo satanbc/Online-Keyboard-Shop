@@ -19,6 +19,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+/// Тестування контролеру продуктів
 @SpringBootTest
 public class ProductControllerTest {
 
@@ -96,7 +97,7 @@ public class ProductControllerTest {
     void testDeleteProduct() {
         long productId = 1L;
 
-        String message = productController.deleteProduct(productId);
+        String message = productController.delete(productId);
 
         assertEquals("Product has been deleted successfully", message);
         verify(productService).deleteById(productId);

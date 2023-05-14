@@ -4,6 +4,7 @@ import org.junit.platform.runner.JUnitPlatform;
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.runner.RunWith;
 
+/// Основний клас для запуску тестування
 @RunWith(JUnitPlatform.class)
 @SelectClasses({ProductControllerTest.class, CartControllerTest.class})
 public class Year2Sem2ProjectApplicationTests {

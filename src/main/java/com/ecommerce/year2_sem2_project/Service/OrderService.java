@@ -9,5 +9,9 @@ public interface OrderService {
     public void createOrder(Order order);
 
     public List<Order> getAllOrders();
+
+    public double calculateTotalPrice(Order order);
+
+    public Order getOrderById(Long orderId);
 }
 

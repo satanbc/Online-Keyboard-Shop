@@ -5,6 +5,9 @@ import com.ecommerce.year2_sem2_project.Entity.OrderedItem;
 import com.ecommerce.year2_sem2_project.Entity.Product;
 import com.ecommerce.year2_sem2_project.Service.OrderService;
 import com.ecommerce.year2_sem2_project.Service.ProductService;
+import com.ecommerce.year2_sem2_project.Strategy.CreditCardPaymentStrategy;
+import com.ecommerce.year2_sem2_project.Strategy.PayPalPaymentStrategy;
+import com.ecommerce.year2_sem2_project.Strategy.PaymentContext;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,6 +27,14 @@ public class CartController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private PaymentContext paymentContext;
+
+    @Autowired
+    public CartController(PaymentContext paymentContext) {
+        this.paymentContext = paymentContext;
+    }
 
     @ModelAttribute("cart")
     public List<Product> initializeCart() {
@@ -77,6 +88,7 @@ public class CartController {
     public String createOrder(@RequestParam("customerName") String customerName,
                               @RequestParam("email") String email,
                               @RequestParam("address") String address,
+                              @RequestParam("paymentMethod") String paymentMethod,
                               @ModelAttribute("cart") List<Product> cart,
                               HttpSession session,
                               Model model) {
@@ -102,14 +114,24 @@ public class CartController {
         order.setTotalPrice(totalPrice);
         order.setOrderedItems(orderedItems);
 
-        orderService.createOrder(order);
+        switch (paymentMethod) {
+            case "creditCard":
+                paymentContext.setPaymentStrategy(new CreditCardPaymentStrategy());
+                break;
+            case "payPal":
+                paymentContext.setPaymentStrategy(new PayPalPaymentStrategy());
+                break;
+        }
 
-        cart.clear();
+        paymentContext.makePayment(totalPrice);
+
+        orderService.createOrder(order);
 
         model.addAttribute("order", order);
 
+        cart.clear();
+
         return "order-success";
     }
-
 }
 

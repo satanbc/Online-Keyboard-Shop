@@ -1,5 +1,8 @@
 package com.ecommerce.year2_sem2_project.Strategy;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PaymentContext {
     private PaymentStrategy paymentStrategy;
 
@@ -11,3 +14,4 @@ public class PaymentContext {
         paymentStrategy.pay(amount);
     }
 }
+

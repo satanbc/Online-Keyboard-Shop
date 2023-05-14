@@ -2,16 +2,14 @@ package com.ecommerce.year2_sem2_project.Service;
 
 import com.ecommerce.year2_sem2_project.DAO.OrderRepository;
 import com.ecommerce.year2_sem2_project.Entity.Order;
+import com.ecommerce.year2_sem2_project.Entity.OrderedItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.*;
 
 @Service
@@ -65,6 +63,26 @@ public class OrderServiceImpl implements OrderService{
         Collections.reverse(allProducts);
 
         return allProducts;
+    }
+
+    public double calculateTotalPrice(Order order) {
+        double totalPrice = 0.0;
+
+        List<OrderedItem> orderedItems = order.getOrderedItems();
+        for (OrderedItem orderedItem : orderedItems) {
+            double itemPrice = orderedItem.getProduct().getPrice();
+            int quantity = orderedItem.getQuantity();
+            double itemTotalPrice = itemPrice * quantity;
+            totalPrice += itemTotalPrice;
+        }
+
+        return totalPrice;
+    }
+
+    @Override
+    public Order getOrderById(Long orderId) {
+        Optional<Order> optionalOrder = orderRepository.findById(orderId);
+        return optionalOrder.orElse(null);
     }
 }
 

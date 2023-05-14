@@ -1,14 +1,19 @@
 package com.ecommerce.year2_sem2_project.Controller;
 
-import com.ecommerce.year2_sem2_project.Entity.Product;
-import com.ecommerce.year2_sem2_project.Service.ProductService;
+import com.ecommerce.year2_sem2_project.Model.Entity.Product;
+import com.ecommerce.year2_sem2_project.Model.Notifying_Observer.*;
+import com.ecommerce.year2_sem2_project.Model.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /// Контролер Spring MVC, який відповідає за обробку основних сторінок веб-додатку
 @Controller
@@ -44,5 +49,30 @@ public class EcommerceController {
     public String login() {
 
         return "login";
+    }
+
+    ///  Відображає сторінку групової закупки
+    @GetMapping("/group-buy")
+    public String groupBuy() {
+
+        return "group-buy";
+    }
+
+    /// Додає спостерігачів
+    @PostMapping("/notify")
+    public String addObserver(@RequestParam("email") String email,
+                            @RequestParam("phoneNumber") String phoneNumber) {
+        OrderSubject orderSubject = new OrderSubject();
+        Observer observer1 = new EmailNotificationObserver(email);
+        Observer observer2 = new SMSNotificationObserver(phoneNumber);
+
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+        executorService.submit(new ObserverAdditionTask(orderSubject, observer1));
+        executorService.submit(new ObserverAdditionTask(orderSubject, observer2));
+
+        executorService.shutdown();
+
+        return "redirect:/group-buy";
     }
 }

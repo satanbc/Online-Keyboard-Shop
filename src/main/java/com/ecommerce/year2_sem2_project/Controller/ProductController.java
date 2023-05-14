@@ -1,10 +1,10 @@
 package com.ecommerce.year2_sem2_project.Controller;
 
-import com.ecommerce.year2_sem2_project.Entity.Order;
-import com.ecommerce.year2_sem2_project.Entity.Product;
-import com.ecommerce.year2_sem2_project.Factory.ProductFactory;
-import com.ecommerce.year2_sem2_project.Service.OrderService;
-import com.ecommerce.year2_sem2_project.Service.ProductService;
+import com.ecommerce.year2_sem2_project.Model.Entity.Order;
+import com.ecommerce.year2_sem2_project.Model.Entity.Product;
+import com.ecommerce.year2_sem2_project.Model.CreatingProducts_Factory.ProductFactory;
+import com.ecommerce.year2_sem2_project.Model.Service.OrderService;
+import com.ecommerce.year2_sem2_project.Model.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

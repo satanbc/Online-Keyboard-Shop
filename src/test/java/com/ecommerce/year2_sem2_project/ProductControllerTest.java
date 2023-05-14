@@ -1,10 +1,10 @@
 package com.ecommerce.year2_sem2_project;
 
 import com.ecommerce.year2_sem2_project.Controller.ProductController;
-import com.ecommerce.year2_sem2_project.Entity.Order;
-import com.ecommerce.year2_sem2_project.Entity.Product;
-import com.ecommerce.year2_sem2_project.Service.OrderService;
-import com.ecommerce.year2_sem2_project.Service.ProductService;
+import com.ecommerce.year2_sem2_project.Model.Entity.Order;
+import com.ecommerce.year2_sem2_project.Model.Entity.Product;
+import com.ecommerce.year2_sem2_project.Model.Service.OrderService;
+import com.ecommerce.year2_sem2_project.Model.Service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;

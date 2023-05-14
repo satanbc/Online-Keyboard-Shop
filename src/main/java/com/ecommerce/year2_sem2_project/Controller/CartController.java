@@ -1,13 +1,13 @@
 package com.ecommerce.year2_sem2_project.Controller;
 
-import com.ecommerce.year2_sem2_project.Entity.Order;
-import com.ecommerce.year2_sem2_project.Entity.OrderedItem;
-import com.ecommerce.year2_sem2_project.Entity.Product;
-import com.ecommerce.year2_sem2_project.Service.OrderService;
-import com.ecommerce.year2_sem2_project.Service.ProductService;
-import com.ecommerce.year2_sem2_project.Payment_Strategy.CreditCardPaymentStrategy;
-import com.ecommerce.year2_sem2_project.Payment_Strategy.PayPalPaymentStrategy;
-import com.ecommerce.year2_sem2_project.Payment_Strategy.PaymentContext;
+import com.ecommerce.year2_sem2_project.Model.Entity.Order;
+import com.ecommerce.year2_sem2_project.Model.Entity.OrderedItem;
+import com.ecommerce.year2_sem2_project.Model.Entity.Product;
+import com.ecommerce.year2_sem2_project.Model.Service.OrderService;
+import com.ecommerce.year2_sem2_project.Model.Service.ProductService;
+import com.ecommerce.year2_sem2_project.Model.Payment_Strategy.CreditCardPaymentStrategy;
+import com.ecommerce.year2_sem2_project.Model.Payment_Strategy.PayPalPaymentStrategy;
+import com.ecommerce.year2_sem2_project.Model.Payment_Strategy.PaymentContext;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 

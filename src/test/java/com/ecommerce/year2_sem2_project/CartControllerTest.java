@@ -1,23 +1,19 @@
 package com.ecommerce.year2_sem2_project;
 
 import com.ecommerce.year2_sem2_project.Controller.CartController;
-import com.ecommerce.year2_sem2_project.Controller.ProductController;
-import com.ecommerce.year2_sem2_project.Entity.Order;
-import com.ecommerce.year2_sem2_project.Entity.OrderedItem;
-import com.ecommerce.year2_sem2_project.Entity.Product;
-import com.ecommerce.year2_sem2_project.Service.OrderService;
-import com.ecommerce.year2_sem2_project.Service.ProductService;
-import com.ecommerce.year2_sem2_project.Payment_Strategy.PaymentContext;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ecommerce.year2_sem2_project.Model.Entity.Order;
+import com.ecommerce.year2_sem2_project.Model.Entity.OrderedItem;
+import com.ecommerce.year2_sem2_project.Model.Entity.Product;
+import com.ecommerce.year2_sem2_project.Model.Service.OrderService;
+import com.ecommerce.year2_sem2_project.Model.Service.ProductService;
+import com.ecommerce.year2_sem2_project.Model.Payment_Strategy.PaymentContext;
 import jakarta.servlet.http.HttpSession;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.ui.Model;
-import org.springframework.web.servlet.ModelAndView;
 
-import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 

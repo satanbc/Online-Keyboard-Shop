@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+    .keyboard-price {
+        font-size: 24px;
+        font-weight: bold;
+        color: #007bff;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Buy</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body class="container">
+<header class="header">
+    <br>
+    <div class="logo">
+        <a href="/"><img src="https://cdn.shopify.com/s/files/1/0238/7342/1376/files/ck-logo-full-smaller-navy-stroke_250x.png?v=1652298695" alt="Logo"></a>
+    </div>
+    <nav class="navigation">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/cart">Cart</a></li>
+            <li><a href="/admin/products">Admin <img th:src="@{https://cdn-icons-png.flaticon.com/512/6522/6522516.png}" style="height: 50px; width: auto; object-fit: scale-down" class="card-img-top" alt="icon"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<script>
+    window.addEventListener("scroll", function() {
+        var header = document.querySelector(".header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    });
+</script>
+<h1>GMK Bento Group Buy</h1>
+
+<div>
+    <img src="https://candykeys.com/img/gb/2.jpg" style="max-width: 100%" alt="GMK Awesome Keyboard">
+    <br><br>
+    <p class="keyboard-price">$199.99</p>
+    <p>GMK Bento is designed to support nearly all keyboards out there, from HHKB layouts, to Ortholinear layouts, we are sure you will find your fit.</p>
+</div>
+
+<p>Group Buy Details:</p>
+<ul>
+    <li>Group Buy Start Date: June 15, 2023</li>
+    <li>Group Buy End Date: August 15, 2023</li>
+    <li>Estimated Shipping Date: December 2023</li>
+</ul>
+
+<br>
+
+<div>
+    <h2>Notify me when group buy will start:</h2>
+    <form th:action="@{/notify}" method="post" id="notificationForm" onsubmit="return validateForm()">
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Notify Me!</button>
+    </form>
+
+    <script th:inline="javascript">
+        function validateForm() {
+            var email = document.forms["notificationForm"]["email"].value;
+            var phoneNumber = document.forms["notificationForm"]["phoneNumber"].value;
+
+            if (email === '' || phoneNumber === '') {
+                alert("Please fill in all fields.");
+                return false;
+            }
+
+            alert("You will be notified!");
+            return true;
+        }
+    </script>
+</div>
+</body>
+</html>

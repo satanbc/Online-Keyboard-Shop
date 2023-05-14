@@ -34,4 +34,10 @@ public class EcommerceController {
 
         return "about";
     }
+
+    @GetMapping("/login")
+    public String login() {
+
+        return "login";
+    }
 }

@@ -27,6 +27,11 @@ public class ProductController {
     @Autowired
     private OrderService orderService;
 
+    public ProductController(ProductService productService, OrderService orderService) {
+        this.productService = productService;
+        this.orderService = orderService;
+    }
+
     @GetMapping("")
     public String listProducts(Model model) {
         ExecutorService executorService = Executors.newFixedThreadPool(10);

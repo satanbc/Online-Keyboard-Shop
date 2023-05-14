@@ -3,6 +3,7 @@ package com.ecommerce.year2_sem2_project.Entity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
 @Table(name = "products")
@@ -18,13 +19,25 @@ public class Product {
     private String description;
 
     @Column(name = "price")
-    private Long price;
+    private double price;
 
     @Column(name = "stock")
     private Integer stock;
 
     @Column(name = "image_url")
     private String imageUrl;
+
+    public Product() {
+    }
+
+    public Product(Long id, String name, String description, double price, Integer stock, String imageUrl) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.stock = stock;
+        this.imageUrl = imageUrl;
+    }
 
     public Long getId() {
         return id;
@@ -50,11 +63,11 @@ public class Product {
         this.description = description;
     }
 
-    public Long getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -73,4 +86,21 @@ public class Product {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Product other = (Product) obj;
+        return Objects.equals(name, other.name) &&
+                Objects.equals(description, other.description) &&
+                Objects.equals(price, other.price) &&
+                Objects.equals(stock, other.stock) &&
+                Objects.equals(imageUrl, other.imageUrl);
+    }
+
 }

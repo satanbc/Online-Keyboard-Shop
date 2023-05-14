@@ -5,9 +5,9 @@ import com.ecommerce.year2_sem2_project.Entity.OrderedItem;
 import com.ecommerce.year2_sem2_project.Entity.Product;
 import com.ecommerce.year2_sem2_project.Service.OrderService;
 import com.ecommerce.year2_sem2_project.Service.ProductService;
-import com.ecommerce.year2_sem2_project.Strategy.CreditCardPaymentStrategy;
-import com.ecommerce.year2_sem2_project.Strategy.PayPalPaymentStrategy;
-import com.ecommerce.year2_sem2_project.Strategy.PaymentContext;
+import com.ecommerce.year2_sem2_project.Payment_Strategy.CreditCardPaymentStrategy;
+import com.ecommerce.year2_sem2_project.Payment_Strategy.PayPalPaymentStrategy;
+import com.ecommerce.year2_sem2_project.Payment_Strategy.PaymentContext;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -33,6 +33,12 @@ public class CartController {
 
     @Autowired
     public CartController(PaymentContext paymentContext) {
+        this.paymentContext = paymentContext;
+    }
+
+    public CartController(ProductService productService, OrderService orderService, PaymentContext paymentContext) {
+        this.productService = productService;
+        this.orderService = orderService;
         this.paymentContext = paymentContext;
     }
 

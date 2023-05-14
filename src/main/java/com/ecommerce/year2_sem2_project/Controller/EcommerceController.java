@@ -62,14 +62,14 @@ public class EcommerceController {
     @PostMapping("/notify")
     public String addObserver(@RequestParam("email") String email,
                             @RequestParam("phoneNumber") String phoneNumber) {
-        OrderSubject orderSubject = new OrderSubject();
+        NotifySubject notifySubject = new NotifySubject();
         Observer observer1 = new EmailNotificationObserver(email);
         Observer observer2 = new SMSNotificationObserver(phoneNumber);
 
         ExecutorService executorService = Executors.newFixedThreadPool(10);
 
-        executorService.submit(new ObserverAdditionTask(orderSubject, observer1));
-        executorService.submit(new ObserverAdditionTask(orderSubject, observer2));
+        executorService.submit(new ObserverAdditionTask(notifySubject, observer1));
+        executorService.submit(new ObserverAdditionTask(notifySubject, observer2));
 
         executorService.shutdown();
 

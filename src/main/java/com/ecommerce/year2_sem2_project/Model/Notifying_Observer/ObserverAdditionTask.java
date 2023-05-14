@@ -2,17 +2,17 @@ package com.ecommerce.year2_sem2_project.Model.Notifying_Observer;
 
 /// Додавання спостерігачей
 public class ObserverAdditionTask implements Runnable {
-    private OrderSubject orderSubject;
+    private NotifySubject notifySubject;
     private Observer observer;
 
-    public ObserverAdditionTask(OrderSubject orderSubject, Observer observer) {
-        this.orderSubject = orderSubject;
+    public ObserverAdditionTask(NotifySubject notifySubject, Observer observer) {
+        this.notifySubject = notifySubject;
         this.observer = observer;
     }
 
     @Override
     public void run() {
-        orderSubject.addObserver(observer);
+        notifySubject.addObserver(observer);
     }
 }
 

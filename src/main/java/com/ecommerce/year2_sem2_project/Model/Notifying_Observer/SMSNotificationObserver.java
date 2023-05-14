@@ -1,7 +1,5 @@
 package com.ecommerce.year2_sem2_project.Model.Notifying_Observer;
 
-import com.ecommerce.year2_sem2_project.Model.Entity.Order;
-
 /// Реалізація спостерігача через SMS
 public class SMSNotificationObserver implements Observer {
 
@@ -12,7 +10,8 @@ public class SMSNotificationObserver implements Observer {
     }
 
     @Override
-    public void update(Order order) {
+    public void update() {
 
+        System.out.println("Sending SMS notification");
     }
 }

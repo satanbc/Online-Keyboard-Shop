@@ -39,9 +39,11 @@ var menudata={children:[
 {text:"h",url:"functions.html#index_h"},
 {text:"l",url:"functions.html#index_l"},
 {text:"n",url:"functions.html#index_n"},
+{text:"p",url:"functions.html#index_p"},
 {text:"r",url:"functions.html#index_r"},
 {text:"s",url:"functions.html#index_s"},
-{text:"u",url:"functions.html#index_u"}]},
+{text:"u",url:"functions.html#index_u"},
+{text:"v",url:"functions.html#index_v"}]},
 {text:"Functions",url:"functions_func.html",children:[
 {text:"a",url:"functions_func.html#index_a"},
 {text:"c",url:"functions_func.html#index_c"},
@@ -51,6 +53,8 @@ var menudata={children:[
 {text:"h",url:"functions_func.html#index_h"},
 {text:"l",url:"functions_func.html#index_l"},
 {text:"n",url:"functions_func.html#index_n"},
+{text:"p",url:"functions_func.html#index_p"},
 {text:"r",url:"functions_func.html#index_r"},
 {text:"s",url:"functions_func.html#index_s"},
-{text:"u",url:"functions_func.html#index_u"}]}]}]}]}
+{text:"u",url:"functions_func.html#index_u"},
+{text:"v",url:"functions_func.html#index_v"}]}]}]}]}

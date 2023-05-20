@@ -97,7 +97,7 @@ public class ProductControllerTest {
     void testDeleteProduct() {
         long productId = 1L;
 
-        String message = productController.delete(productId);
+        String message = productController.deleteProduct(productId);
 
         assertEquals("Product has been deleted successfully", message);
         verify(productService).deleteById(productId);

@@ -84,9 +84,19 @@ public class ProductServiceImpl implements ProductService {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.submit(() -> {
             productRepository.deleteById(id);
+            resetAutoIncrement();
         });
         executorService.shutdown();
     }
+
+    private void resetAutoIncrement() {
+        Long maxId = productRepository.findMaxId();
+        if (maxId == null) {
+            maxId = 0L;
+        }
+        productRepository.resetAutoIncrement(maxId + 1);
+    }
+
 
     public void updateProduct(Product updatedProduct) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();

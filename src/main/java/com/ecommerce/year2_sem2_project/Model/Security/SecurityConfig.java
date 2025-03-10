@@ -18,7 +18,7 @@ public class SecurityConfig {
     public InMemoryUserDetailsManager userDetailsManager(){
 
         UserDetails matvii = User.builder()
-                .username("matvii")
+                .username("admin")
                 .password("{noop}1234")
                 .roles("ADMIN")
                 .build();

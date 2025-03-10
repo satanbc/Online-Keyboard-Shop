@@ -7,15 +7,15 @@ import java.util.List;
 public interface OrderService {
 
     /// Створює нове замовлення
-    public void createOrder(Order order);
+    void createOrder(Order order);
 
     /// Отримує всі замовлення
-    public List<Order> getAllOrders();
+    List<Order> getAllOrders();
 
     /// Обчислює загальну вартість замовлення
-    public double calculateTotalPrice(Order order);
+    double calculateTotalPrice(Order order);
 
     /// Отримує замовлення за його унікальним ідентифікатором
-    public Order getOrderById(Long orderId);
+    Order getOrderById(Long orderId);
 }
 
